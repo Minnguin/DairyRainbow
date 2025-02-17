@@ -1,0 +1,134 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f5a7a7, #f6d589, #a7f5c1, #a7ccf5, #f5a7f1);
+    background-size: 500% 100%;
+    animation: rainbow-background 20s linear infinite;
+}
+
+@keyframes rainbow-background {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+
+header {
+    background-color: #C4EEFF;
+    color: #000CFF;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+table {
+    background-color: white; /* เพิ่มบรรทัดนี้เพื่อกำหนดสีพื้นหลังของตารางเป็นสีขาว */
+    border-collapse: separate; /* เพิ่มบรรทัดนี้เพื่อให้ขอบของเซลล์แยกกัน */
+    border-spacing: 10px; /* ปรับขนาดระยะห่างของเซลล์ต่างๆ */
+    border-radius: 15px; /* เพิ่มบรรทัดนี้เพื่อกำหนดความโค้งของขอบ */
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+th, td {
+    /*border: 1px solid #ddd;*/
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    padding: 15px;
+}
+
+
+
+tr:hover {
+    background-color: #ddd;
+}
+
+#total-price {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.center-image {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+.center-image img {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px; /* เพิ่มบรรทัดนี้เพื่อกำหนดความโค้งของมุม */
+}
+
+.center-image input[type="date"],
+.center-image input[type="time"] {
+    display: block;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: calc(50% - 10px);
+}
+
+.center-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #FFE724;
+    color: black;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #ceba24;
+}
+
+#logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px; /* ปรับขนาดของ margin ตามต้องการ */
+}
+
+#logo-container img {
+    width: 120px; /* ปรับขนาดของโลโก้ตามความต้องการ */
+    height: auto;
+}

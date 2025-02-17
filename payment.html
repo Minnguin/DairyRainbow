@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าชำระเงิน</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <header>
+
+        <div id="logo-container">
+            <a href="index.html">
+                <img src="photo/logo.jpg" alt="โลโก้">
+            </a>
+        </div>
+
+        <h1>หน้าชำระเงิน</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="menu.html">เมนู</a></li>
+                <li><a href="contact.html">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+        <br>
+    </header>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>สินค้า</th>
+                <th>ราคา</th>
+                <th>ขนาด</th>
+                <th>ท็อปปิ้ง</th>
+                <th>ราคาเพิ่มเติม</th>
+                <th>ราคารวม</th>
+            </tr>
+        </thead>
+        <tbody id="payment-table-body">
+            <!-- ข้อมูลสินค้าที่จะถูกเพิ่มที่นี่ -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" id="total-label">ราคารวมทั้งหมด:</td>
+                <td id="total-price-footer"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="center-image">
+        <img src="photo/prompay.png" alt="รูปภาพ">
+        <input type="file" accept="image/*" id="image-upload">
+    </div>
+
+    <div class="center-image">
+        <input type="date" id="date-input" required>
+        <input type="time" id="time-input" required>
+    </div>
+
+    <div class="center-button">
+        <button onclick="confirmOrder()">ยืนยันการสั่งซื้อ</button>
+    </div>
+
+    <script>
+        function confirmOrder() {
+            var imageInput = document.getElementById('image-upload');
+            var dateInput = document.getElementById('date-input');
+            var timeInput = document.getElementById('time-input');
+
+            if (imageInput.files.length === 0 || dateInput.value === '' || timeInput.value === '') {
+                alert('กรุณากรอกวันที่และเวลา และเลือกส่งสลิปการโอนเงินก่อนที่จะยืนยันการสั่งซื้อ');
+            } else {
+                var orderNumber = localStorage.getItem('orderNumber') || 0; // Get current order number or initialize to 0
+                orderNumber = parseInt(orderNumber) + 1; // Increment order number
+                localStorage.setItem('orderNumber', orderNumber); // Save updated order number
+
+                // Prepare data to send to finalpayment.html
+                var cart = JSON.parse(localStorage.getItem('cart')) || [];
+                var orderData = {
+                    orderID: pad(orderNumber, 3),
+                    cart: cart
+                };
+                alert('ทางร้านได้รับการสั่งซื้อแล้ว');
+
+                // Store cart data in local storage
+                storeOrderDataForAdmin(orderData);
+
+                // Store orderID in localStorage customerInfo
+                var customerInfo = JSON.parse(localStorage.getItem('customerInfo')) || {};
+                customerInfo.orderID = pad(orderNumber, 3);
+                localStorage.setItem('customerInfo', JSON.stringify(customerInfo));
+
+                // Encode order data as URL parameter
+                var orderDataParam = encodeURIComponent(JSON.stringify(orderData));
+
+                // Redirect to finalpayment.html with order data parameter
+                location.href = 'finalpayment.html?data=' + orderDataParam;
+
+                // Remove cart data from local storage
+                localStorage.removeItem('cart');
+
+                // Update stock in database
+                updateStockInDatabase(cart);
+            }
+        }
+
+        
+        window.onload = function() {
+            renderPaymentTable();
+        };
+
+        function renderPaymentTable() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var paymentTableBody = document.getElementById('payment-table-body');
+            var totalPrice = 0;
+
+            cart.forEach(function(item) {
+                var row = paymentTableBody.insertRow();
+                var additionalPrice = 0;
+
+                if (item.size === 'cone') {
+                    additionalPrice += 5;
+                } else if (item.size === 'cup') {
+                    additionalPrice += 10;
+                }
+                additionalPrice += item.toppings.length * 5;
+
+                var itemTotalPrice = item.price + additionalPrice;
+                totalPrice += itemTotalPrice;
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.price}</td>
+                    <td>${item.size}</td>
+                    <td>${item.toppings.join(', ')}</td>
+                    <td>${additionalPrice}</td>
+                    <td>${itemTotalPrice}</td>
+                `;
+            });
+
+            var totalPriceFooter = document.getElementById('total-price-footer');
+            totalPriceFooter.textContent = totalPrice + ' บาท';
+        }
+
+        // Function to pad number with leading zeros
+        function pad(num, size) {
+            var s = "000" + num;
+            return s.substr(s.length - size);
+        }
+
+        function storeOrderData(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function storeOrderDataForAdmin(cart) {
+             // เพิ่ม orderID เข้าไปในข้อมูลการสั่งซื้อ (cart) ก่อนเก็บลง localStorage
+            const orderID = localStorage.getItem('orderNumber') || 0; // ดึงเลข orderID ล่าสุดจาก localStorage
+            cart.orderID = pad(parseInt(orderID) + 1, 3); // กำหนด orderID ให้กับ cart โดยเพิ่มขึ้น 1 จากเลข orderID ล่าสุด
+            localStorage.setItem('orderDataForAdmin', JSON.stringify(cart)); // เก็บข้อมูลการสั่งซื้อ (cart) ที่มี orderID ใหม่ลงใน localStorage
+        }
+
+    </script>
+</body>
+</html>

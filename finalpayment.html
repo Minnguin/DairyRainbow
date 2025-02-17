@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ขอบคุณที่ใช้บริการและชำระเงิน</title>
+    <link rel="stylesheet" href="finalpayment.css">
+</head>
+<body>
+    <div class="container">
+        <img src="photo/logo.jpg" alt="ขอบคุณ" class="thank-you-img">
+        <h1>ขอบคุณที่ใช้บริการและชำระเงิน</h1>
+        <p>คำสั่งซื้อของคุณได้รับการยืนยันแล้ว</p>
+        <p>หมายเลขออเดอร์: <span id="orderNumber"></span></p>
+        <button onclick="redirectToHomepage()">กลับสู่หน้าหลัก</button>
+    </div>
+
+    <script>
+        // Function to redirect to homepage
+        function redirectToHomepage() {
+            location.href = 'index.html';
+        }
+
+        // Function to pad number with leading zeros
+        function pad(num, size) {
+            var s = "000" + num;
+            return s.substr(s.length - size);
+        }
+
+        // Check if order number exists in localStorage
+        var orderNumber = localStorage.getItem('orderNumber');
+        if (!orderNumber) {
+            orderNumber = 1; // Set order number to 1 if it doesn't exist in localStorage
+        }
+
+        // Display the order number
+        document.getElementById('orderNumber').textContent = pad(orderNumber, 3);
+    </script>
+</body>
+</html>

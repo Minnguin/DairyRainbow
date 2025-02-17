@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #C4EEFF;
+    color: black;
+    text-align: center;
+    padding: 20px 0;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* จัดให้เนื้อหาภายในอยู่กึ่งกลางตามแนวนอน */
+    justify-content: center; /* จัดให้เนื้อหาภายในอยู่กึ่งกลางตามแนวตั้ง */
+}
+
+table {
+    margin-bottom: 20px; /* ให้มีระยะห่างด้านล่างของตาราง */
+}
+
+
+button {
+    background-color: #FFE724; /* ตั้งค่าสีพื้นหลังของปุ่ม */
+    color: #000; /* ตั้งค่าสีข้อความของปุ่ม */
+    border: none; /* ลบเส้นขอบ */
+    padding: 10px 20px; /* กำหนดขนาดของปุ่ม */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นชี้ไป */
+    border-radius: 15px; /* เพิ่มบรรทัดนี้เพื่อกำหนดความโค้งของขอบ */
+}
+
+button:hover {
+    background-color: #bdac4e; /* เมื่อโฮเวอร์ปุ่ม สีพื้นหลังจะเปลี่ยน */
+}

@@ -1,0 +1,234 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f5a7a7, #f6d589, #a7f5c1, #a7ccf5, #f5a7f1);
+    background-size: 500% 100%;
+    animation: rainbow-background 20s linear infinite;
+}
+
+@keyframes rainbow-background {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+
+
+
+header {
+    background-color: #C4EEFF;
+    color: #000CFF;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navigation-button {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #000CFF;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#prevButton {
+    left: 10px;
+}
+
+#nextButton {
+    right: 10px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* จัดให้อยู่ตรงกลางแนวนอน */
+}
+
+.product {
+    margin: 20px;
+}
+
+
+.product {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #FFE724;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #FFE724;
+}
+
+.buy-button {
+    background-color: #FF6B6B;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.buy-button:hover {
+    background-color: #FFE724;
+}
+
+#cart-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #FF6B6B;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+footer {
+    position: fixed; /* หรือใช้ absolute ก็ได้ */
+    bottom: 0;
+    background-color: #C4EEFF;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+
+@keyframes text-color-change {
+    0% {
+        color: black;
+    }
+    50% {
+        color: #FF6B6B;
+    }
+    100% {
+        color: black;
+    }
+}
+
+#logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px; /* ปรับขนาดของ margin ตามต้องการ */
+}
+
+#logo-container img {
+    width: 120px; /* ปรับขนาดของโลโก้ตามความต้องการ */
+    height: auto;
+}
+#language-switcher button {
+    background-color: #FFE724;
+    border: none;
+    color: #000CFF;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#language-switcher button:hover {
+    background-color: #bba81b;
+}
+
+button a {
+    text-decoration: none;
+}
+header button {
+    position: absolute; /* เพิ่ม */
+    top: 20px; /* เพิ่ม */
+    right: 20px; /* เพิ่ม */
+    background-color: transparent; /* เพิ่ม */
+    border: none; /* เพิ่ม */
+    color: #000CFF; /* เพิ่ม */
+    font-size: 16px; /* เพิ่ม */
+    cursor: pointer; /* เพิ่ม */
+    text-decoration: none;
+}
+
+button {
+    background-color: #FFE724;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #bba81b;
+}
+
+#productCounter {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #6bc4ff;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 150px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease-in-out;
+}

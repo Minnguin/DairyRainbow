@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Admin</title>
+    <link rel="stylesheet" href="orderAdmin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>รายการสั่งซื้อ</h1>
+    </header>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ออเดอร์สินค้า</th>
+                    <th>ชื่อสินค้า</th>
+                    <th>ราคา</th>
+                    <th>ขนาด</th>
+                    <th>Toppings</th>
+                    <th>ราคาทั้งหมด</th>
+                    <th>Status</th>
+                    <th>Complete</th>
+                </tr>
+            </thead>
+            <tbody id="orderList">
+                <!-- ข้อมูลสินค้าที่จะถูกแสดงไว้ที่นี่ -->
+            </tbody>
+        </table>
+
+         <!-- <button onclick="addOrdersToDatabase()">Add Orders to Database</button> -->
+    </div>
+
+    <script>
+        // ฟังก์ชันสำหรับแสดงข้อมูลใน localStorage ไปเรื่อยๆ
+        function displayOrdersFromLocalStorage() {
+            const orderData = localStorage.getItem('orderDataForAdmin');
+            const customerInfo = JSON.parse(localStorage.getItem('customerInfo'));
+            const orders = JSON.parse(orderData);
+            //const orderDatas = JSON.parse(decodeURIComponent(orderDataParam));
+            
+             // Check if user is logged in
+            if (!isLoggedIn()) {
+                // Redirect to login page if not logged in
+                window.location.href = 'login.html';
+                return; // Stop further execution
+            }
+
+            // เช็คว่ามีข้อมูลใน localStorage หรือไม่
+            if (orders) {
+                // ลบข้อมูลที่มีอยู่ในตารางก่อนที่จะแสดงข้อมูลใหม่
+                document.getElementById('orderList').innerHTML = '';
+
+                // แสดงข้อมูลในตาราง
+                orders.cart.forEach(order => {
+                    const row = document.createElement('tr');
+                    const toppings = order.toppings.join(', ');
+                    const additionalPrice = (order.size === 'cone' ? 5 : 10) + toppings.split(',').length * 5;
+                    const tt = order.price+additionalPrice;
+                    row.innerHTML = `
+                        <td>${customerInfo.orderID}</td>
+                        <td>${order.name}</td>
+                        <td>${order.price}</td>
+                        <td>${order.size}</td>
+                        <td>${toppings}</td>
+                        <td>${tt}</td>
+                        <td>Pending</td>
+                        <td><input type="checkbox" onclick="completeOrder(this)"></td>
+                    `;
+                    document.getElementById('orderList').appendChild(row);
+                
+                    
+                    // เก็บข้อมูลลงใน localStorage
+                    const allinData = JSON.parse(localStorage.getItem('Allin')) || []; // ดึงข้อมูล Allin จาก localStorage ถ้ามี หรือสร้าง array ใหม่ถ้าไม่มี
+                    allinData.push({  // เพิ่มข้อมูลใหม่เข้าไปใน array
+                        OrderID: customerInfo.orderID,
+                        icecreamName: order.name,
+                        price: order.price,
+                        size: order.size,
+                        toppings: order.toppings.join(', '),
+                        total: tt,
+                        status: "Pending"
+                    });
+                    localStorage.setItem('Allin', JSON.stringify(allinData)); // เก็บข้อมูลทั้งหมดลงใน localStorage ใหม่
+                });
+            }
+        }
+
+        function completeOrder(checkbox) {
+            var row = checkbox.parentNode.parentNode;
+            if (checkbox.checked) {
+                row.cells[6].textContent = 'Completed';
+            } else {
+                row.cells[6].textContent = 'Pending';
+            }
+            updateLocalStorage(row.cells[0].textContent, checkbox.checked);
+        }
+
+        // Function to redirect to homepage
+        function redirectToHomepage() {
+            location.href = 'indexEN.html';
+        }
+
+
+        // Check if order number exists in localStorage
+        var orderNumber = localStorage.getItem('orderNumber');
+        if (!orderNumber) {
+            orderNumber = 1; // Set order number to 1 if it doesn't exist in localStorage
+        }
+
+        // ลบรายการเมื่อปุ่มถูกติ้ก
+        function deleteOrder(orderID) {
+            const orderData = JSON.parse(localStorage.getItem('orderDataForAdmin'));
+            orderData.cart = orderData.cart.filter(order => order.orderID !== orderID);
+            localStorage.setItem('orderDataForAdmin', JSON.stringify(orderData));
+            displayOrdersFromLocalStorage();
+        }
+
+        // ใช้ฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+        // window.onload = displayOrdersFromLocalStorage;
+        window.onload = function() {
+            // Check if user is logged in
+            if (!isLoggedIn()) {
+                // Redirect to login page if not logged in
+                window.location.href = 'login.html';
+            } else {
+                // Proceed with displaying order data
+                displayOrdersFromLocalStorage();
+            }
+        };
+
+        function isLoggedIn() {
+            // Check if user is logged in by checking localStorage
+            return localStorage.getItem('isLoggedIn') === 'true';
+        }
+
+        // ตรวจสอบการเปลี่ยนแปลงใน localStorage และอัปเดตหน้าเว็บไซต์เมื่อมีการเปลี่ยนแปลง
+        window.addEventListener('storage', () => {
+            displayOrdersFromLocalStorage();
+        });
+
+
+
+        function addOrdersToDatabase() {
+            // ดึงข้อมูลทั้งหมดจาก localStorage
+            var allOrders = JSON.parse(localStorage.getItem('Allin'));
+
+            // ส่งข้อมูลสั่งซื้อไปยังฐานข้อมูลผ่าน AJAX
+            $.ajax({
+                url: 'add_orders_to_database.php',
+                type: 'POST',
+                data: { orders: allOrders },
+                success: function(response) {
+                    console.log(response);
+                    alert('Orders added to database successfully!');
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('Error adding orders to database. Please try again.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

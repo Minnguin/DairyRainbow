@@ -1,0 +1,308 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f5a7a7, #f6d589, #a7f5c1, #a7ccf5, #f5a7f1);
+    background-size: 500% 100%;
+    animation: rainbow-background 20s linear infinite;
+}
+
+@keyframes rainbow-background {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+
+header {
+    background-color: #C4EEFF;
+    color: #000CFF;
+    padding: 20px;
+    text-align: center;
+}
+
+#logo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px; /* ปรับขนาดของ margin ตามต้องการ */
+}
+
+#logo-container img {
+    width: 120px; /* ปรับขนาดของโลโก้ตามความต้องการ */
+    height: auto;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.product {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+#cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* เพิ่มการเปลี่ยนแปลงอนิเมชัน */
+}
+
+#cart-icon:hover {
+    transform: scale(1.2); /* เพิ่มขนาดเมื่อโฮเวอร์ */
+    filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5)); /* เพิ่มเอฟเฟกต์เงา */
+}
+
+
+.buy-button {
+    align-self: flex-end;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#cart-button {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    background-color: #FFE724 ;
+    color: #000000;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding-top: 1px;
+}
+
+#cart-button img {
+    width: 50px; /* ปรับขนาดไอคอนให้เล็กลง */
+    height: 50; /* ปรับขนาดไอคอนให้เล็กลง */
+    margin-right: 5px; /* เพิ่มระยะห่างของไอคอนด้านขวา */
+}
+
+button.addToCart {
+    background-color: #FFE724;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button.addToCart:hover {
+    background-color: #bba81b;
+    transform: scale(1.05);
+}
+
+
+/* แก้ไขสีพื้นหลังของส่วนที่ครอบสินค้า */
+#products {
+    padding: 20px;
+    display: flex;
+    margin: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* เพิ่มเอฟเฟกต์ hover เพื่อทำให้สินค้าเปล่งประกายเมื่อชี้เม้าส์ */
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ปรับขนาดรูปภาพสินค้า */
+.product img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* ปรับรูปแบบของปุ่มเพิ่มในตะกร้า */
+button {
+    background-color: #FFE724;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #bba81b;
+}
+
+footer {
+    background-color: #C4EEFF;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+/* สไตล์ของหน้าต่าง pop-up */
+.cart-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.cart-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS code */
+header {
+    background-color: #C4EEFF;
+    color: #000CFF;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* เพิ่ม */
+}
+
+header button {
+    position: absolute; /* เพิ่ม */
+    top: 20px; /* เพิ่ม */
+    right: 20px; /* เพิ่ม */
+    background-color: transparent; /* เพิ่ม */
+    border: none; /* เพิ่ม */
+    color: #000CFF; /* เพิ่ม */
+    font-size: 16px; /* เพิ่ม */
+    cursor: pointer; /* เพิ่ม */
+    text-decoration: none;
+}
+
+
+#language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+}
+
+button a {
+    text-decoration: none;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none; /* ยกเลิกการแสดงรูปแบบเดิมของ checkbox สำหรับเบราว์เซอร์ที่ใช้ WebKit */
+    -moz-appearance: none; /* ยกเลิกการแสดงรูปแบบเดิมของ checkbox สำหรับเบราว์เซอร์ที่ใช้ Gecko */
+    appearance: none; /* ยกเลิกการแสดงรูปแบบเดิมของ checkbox */
+    width: 10px; /* กำหนดความกว้างของ checkbox */
+    height: 10px; /* กำหนดความสูงของ checkbox */
+    border-radius: 50%; /* กำหนดให้ checkbox เป็นวงกลม */
+    border: 1px solid #999; /* กำหนดขนาดของเส้นขอบของ checkbox */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นลูกศรเมื่อวางที่ checkbox */
+    transition: all 0.3s ease; /* เพิ่มการเปลี่ยนแปลงเมื่อโฮเวอร์ */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #999; /* กำหนดสีพื้นหลังเมื่อ checkbox ถูกเลือก */
+}
+
+/* ปรับแต่งลักษณะของ dropdown */
+.select-size {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    padding: 8px 16px; /* ปรับขนาดการเส้นขอบ */
+    border-radius: 30px; /* เพิ่มความโค้งของเส้นขอบ */
+    border: 2px solid #ddd; /* ปรับขนาดของเส้นขอบ */
+    background-color: #f5f5f5; /* สีพื้นหลังเดิม */
+    color: #333;
+    transition: border-color 0.3s ease, transform 0.3s ease; /* เพิ่ม transition สำหรับการเปลี่ยนแปลงของเอฟเฟกต์ */
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* ปรับแต่งลักษณะเมื่อโฮเวอร์ */
+.select-size:hover {
+    border-color: #999; /* เปลี่ยนสีเส้นขอบ */
+    transform: scale(1.05); /* เพิ่มการขยายของขนาดเมื่อโฮเวอร์ */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเมื่อโฮเวอร์ */
+}
+
+/* ปรับแต่งลักษณะเมื่อได้รับโฟกัส */
+.select-size:focus {
+    border-color: #666; /* เปลี่ยนสีขอบเมื่อได้รับโฟกัส */
+}
+
+/* ปรับแต่งลักษณะของตัวเลือกที่ถูกเลือก */
+.select-size option:checked {
+    background-color: #bba81b; /* เปลี่ยนสีพื้นหลังของตัวเลือกที่ถูกเลือก */
+    color: white; /* เปลี่ยนสีของข้อความในตัวเลือกที่ถูกเลือก */
+}

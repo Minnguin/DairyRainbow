@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+header {
+    text-align: center;
+}
+
+.login-container {
+    background-color: #C4EEFF; /* เปลี่ยนสีพื้นหลังเป็นสี C4EEFF */
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #FFE724;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ceba24;
+}
+
+
+.error-message {
+    color: #f44336;
+    margin-top: 10px;
+    display: none; /* ซ่อนป๊อบอัพเริ่มต้น */
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: #999;
+    font-size: 20px;
+}
+.error-message {
+    color: #f44336;
+    margin-top: 10px;
+    font-size: 18px; /* เพิ่มขนาดตัวอักษร */
+    font-weight: bold; /* เปลี่ยนเป็นตัวหนา */
+    font-family: 'Arial Black', sans-serif; /* เปลี่ยนแบบอักษร */
+    text-transform: uppercase; /* แปลงเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+    letter-spacing: 2px; /* เพิ่มระยะห่างระหว่างตัวอักษร */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* เพิ่มเงาใต้ตัวอักษร */
+    animation: glow 1s ease-in-out infinite alternate; /* เพิ่มการเคลื่อนไหวสำหรับเงา */
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #f44336, 0 0 20px #f44336, 0 0 30px #f44336;
+    }
+    to {
+        text-shadow: 0 0 20px #f44336, 0 0 30px #f44336, 0 0 40px #f44336;
+    }
+}

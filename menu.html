@@ -1,0 +1,365 @@
+<!----index.html------->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dairy Rainbow</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <header>
+        <div id="logo-container">
+            <a href="index.html">
+                <img src="photo/logo.jpg" alt="โลโก้">
+            </a>
+        </div>
+        <h1>แดรี่ เรนโบว์ ขอต้อนรับคุณ!</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="menu.html">เมนู</a></li>
+                <li><a href="contact.html">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <section id="product" >
+    <div class="product">
+        <img src="photo/rainbow.jpg" alt="ไอศครีมรสเรนโบว์" >
+        <h3 >ไอศครีมรสเรนโบว์</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size1" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping1" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping1" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping1" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping1" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping1" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping1" value="คาราเมล" data-price="5">คาราเมล</label>
+            <!-- เพิ่ม topping ที่เหลือต่อไปนี้ -->
+        </p>
+        <button onclick="addToCart('ไอศครีมรสเรนโบว์', 29, 'size1', 'topping1')">เพิ่มในตะกร้า</button>
+        <!--<button class="buy-button" onclick="buyNow('ไอศครีมรสชาเขียว', 100, 'size1', 'topping1')">ซื้อทันที</button>-->
+    </div>
+
+    <div class="product">
+        <img src="photo/strawberry.jpg" alt="ไอศครีมรสสตรอเบอร์รี่">
+        <h3>ไอศครีมรสสตรอเบอร์รี่</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size2" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping2" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping2" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping2" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping2" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping2" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping2" value="คาราเมล" data-price="5">คาราเมล</label>
+            <!-- เพิ่ม topping ที่เหลือต่อไปนี้ -->
+        </p>
+        <button onclick="addToCart('ไอศครีมรสสตรอเบอร์รี่', 29, 'size2', 'topping2')">เพิ่มในตะกร้า</button>
+        
+    </div>
+
+    <div class="product">
+        <img src="photo/biub.jpg" alt="ไอศครีมรสบูลเบอร์รี่">
+        <h3>ไอศครีมรสบูลเบอร์รี่</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size3" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping3" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping3" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping3" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping3" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping3" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping3" value="คาราเมล" data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสบูลเบอร์รี่', 29, 'size3', 'topping3')">เพิ่มในตะกร้า</button>
+       
+    </div>
+
+    <div class="product">
+        <img src="photo/milk.jpg" alt="ไอศครีมรสนมฮอกไกโด">
+        <h3>ไอศครีมรสนมฮอกไกโด</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size4" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping4" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping4" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping4" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping4" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping4" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping4" value="คาราเมล" data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสนมฮอกไกโด', 29, 'size4', 'topping4')">เพิ่มในตะกร้า</button>
+        
+    </div>
+
+    <div class="product">
+        <img src="photo/cookie.jpg" alt="ไอศครีมรสคุกกี้แอนด์ครีม">
+        <h3>ไอศครีมรสคุกกี้&ครีม</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size5" class="select-size">
+             <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping5" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping5" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping5" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping5" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping5" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping5" value="คาราเมล" data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสคุกกี้แอนด์ครีม', 29, 'size5', 'topping5')">เพิ่มในตะกร้า</button>
+        
+    </div>
+
+    <div class="product">
+        <img src="photo/mint.jpg" alt="ไอศครีมรสมิ้น">
+        <h3>ไอศครีมรสมิ้น</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size6" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping6" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping6" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping6" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping6" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping6" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping6" value="คาราเมล" data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสมิ้น', 29, 'size6', 'topping6')">เพิ่มในตะกร้า</button>
+        
+    </div>
+
+    <div class="product">
+        <img src="photo/greentea.jpg" alt="ไอศครีมรสชาเขียว">
+        <h3>ไอศครีมรสชาเขียว</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size7" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping7" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping7" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping7" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping7" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping7" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping7" value="คาราเมล" data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสชาเขียว', 29, 'size7', 'topping7')">เพิ่มในตะกร้า</button>
+       
+    </div>
+
+    <div class="product">
+        <img src="photo/lemon.jpg" alt="ไอศครีมรสเลม่อน">
+        <h3>ไอศครีมรสเลม่อน</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size8" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping8" value="เรนโบว์" data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping8" value="ช็อคบอล" data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping8" value="ช็อคชิพ" data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping8" value="โอรีโอ้" data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping8" value="แยมเบอร์รี่" data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping8" value="คาราเมล" data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสเลม่อน', 29, 'size8', 'topping8')">เพิ่มในตะกร้า</button>
+        
+    </div>
+
+    <div class="product">
+        <img src="photo/chock.jpg" alt="ไอศครีมช็อกโกแลต">
+        <h3>ไอศครีมช็อกโกแลต</h3>
+        <p>ราคา: 29 บาท</p>
+        <p>ขนาด: <select id="size9" class="select-size">
+            <option value="โคน">โคน 🍦</option>
+            <option value="ถ้วย">ถ้วย 🥣</option>
+        </select></p>
+        <p>เพิ่มท็อปปิ้ง:
+            <label><input type="checkbox" name="topping9" value="เรนโบว์"    data-price="5">เรนโบว์</label>
+            <label><input type="checkbox" name="topping9" value="ช็อคบอล"   data-price="5">ช็อคบอล</label>
+            <label><input type="checkbox" name="topping9" value="ช็อคชิพ"    data-price="5">ช็อคชิพ</label><br>
+            <label><input type="checkbox" name="topping9" value="โอรีโอ้"     data-price="5">โอรีโอ้</label>
+            <label><input type="checkbox" name="topping9" value="แยมเบอร์รี่"  data-price="5">แยมเบอร์รี่</label>
+            <label><input type="checkbox" name="topping9" value="คาราเมล"   data-price="5">คาราเมล</label>
+        </p>
+        <button onclick="addToCart('ไอศครีมรสเลม่อน', 29, 'size9', 'topping9')">เพิ่มในตะกร้า</button>
+       
+    </div>
+
+    </section>
+    <!-- หน้าต่าง pop-up สำหรับตะกร้าสินค้า -->
+     <div id="cart-popup" class="cart-popup">
+        <div class="cart-content">
+            <span class="close-button" onclick="closeCartPopup()">&times;</span>
+            <h2>ตะกร้าสินค้า</h2>
+            <div id="cart-items">
+                <!-- รายการสินค้าในตะกร้าจะถูกแสดงที่นี่ -->
+            </div>
+            <button onclick="checkout()">ชำระเงิน</button>
+        </div>
+    </div>
+
+
+    <div id="cart-button" onclick="openCartPopup()">
+        <img src="photo/icon.png" alt="ตะกร้า">
+        <span id="cart-count">0</span>
+    </div>
+
+    <script>
+
+        function addToCart(name, price, sizeId, toppingName) {
+            var size = document.getElementById(sizeId).value;
+            var toppings = [];
+            var toppingInputs = document.getElementsByName(toppingName);
+            for (var i = 0; i < toppingInputs.length; i++) {
+                if (toppingInputs[i].checked) {
+                    toppings.push(toppingInputs[i].value);
+                }
+            }
+
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: name, price: price, size: size, toppings: toppings });
+            localStorage.setItem('cart', JSON.stringify(cart)); // เพิ่มข้อมูลลงใน localStorage
+
+            updateCartCount(); // อัพเดตจำนวนรายการในตะกร้า
+        }
+
+
+        function buyNow(name, price, sizeId, toppingName) {
+            addToCart(name, price, sizeId, toppingName);
+            openCartPopup(); // เปิดหน้าต่าง pop-up เมื่อซื้อสินค้าทันที
+        }
+
+        function updateCartCount() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var count = cart.length;
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function openCartPopup() {
+            document.getElementById('cart-popup').style.display = 'block';
+            renderCart(); // เรียกใช้ฟังก์ชัน renderCart() เพื่อแสดงรายการสินค้าในตะกร้า
+        }
+        function closeCartPopup() {
+            document.getElementById('cart-popup').style.display = 'none';
+        }
+
+        function renderCart() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var cartItems = document.getElementById('cart-items');
+            var totalPrice = 0;
+            cartItems.innerHTML = ''; // เคลียร์ข้อมูลเก่าทุกครั้งก่อนที่จะเริ่มแสดงข้อมูลใหม่
+
+            cart.forEach(function(item, index) {
+                    // คำนวณราคาที่ต้องเพิ่มเติมสำหรับ size และ topping
+                    var additionalPrice = 0;
+                    if (item.size === 'cone') {
+                        additionalPrice += 5;
+                    } else if (item.size === 'cup') {
+                        additionalPrice += 10;
+                    }
+                    additionalPrice += item.toppings.length * 5;
+
+                    // คำนวณราคารวมของรายการนี้
+                    var itemTotalPrice = item.price + additionalPrice;
+                    totalPrice += itemTotalPrice;
+
+                    // สร้าง HTML element สำหรับแสดงรายละเอียดของสินค้า
+                    var toppings = item.toppings.length > 0 ? item.toppings.join(', ') : '-';
+                    var cartItem = document.createElement('div');
+                    cartItem.innerHTML = `
+                        <p><strong>${item.name}</strong></p>
+                        <p>ราคา: ${item.price} บาท</p>
+                        <p>ขนาด: ${item.size}</p>
+                        <p>Toppings: ${item.toppings.join(', ')}</p>
+                        <p>ราคาเพิ่มเติม: ${additionalPrice} บาท</p>
+                        <p>ราคารวม: ${itemTotalPrice} บาท</p>
+                        <button onclick="removeItem(${index})">ลบรายการ</button>
+                        <hr>
+                    `;
+                    cartItems.appendChild(cartItem);
+            });
+
+            // เพิ่ม HTML element เพื่อแสดงราคารวมทั้งหมด
+            var totalElement = document.createElement('p');
+            totalElement.innerHTML = `<strong>ราคารวมทั้งหมด: ${totalPrice} บาท</strong>`;
+            cartItems.appendChild(totalElement);
+        }
+        function removeItem(index) {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // ลบสินค้าที่ระบุออกจากตะกร้า
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart(); // แสดงตะกร้าใหม่หลังจากการลบสินค้า
+            updateCartCount(); // อัพเดทจำนวนสินค้าในไอคอนตะกร้า
+        }
+
+        function checkout() {
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var totalPrice = 0;
+            // คำนวณราคารวมทั้งหมด
+            cart.forEach(function(item) {
+                var additionalPrice = 0;
+                if (item.size === 'cone') {
+                    additionalPrice += 5;
+                } else if (item.size === 'cup') {
+                    additionalPrice += 10;
+                }
+                additionalPrice += item.toppings.length * 5;
+                totalPrice += item.price + additionalPrice;
+            });
+
+            // ตรวจสอบว่าราคารวมทั้งหมดเป็น 0 บาทหรือไม่
+            if (totalPrice === 0) {
+                alert('กรุณาเพิ่มสินค้าในตะกร้าก่อนทำการชำระเงิน');
+            } else {
+                // ถ้าราคารวมทั้งหมดไม่ใช่ 0 บาท ให้เก็บข้อมูลสินค้าในตะกร้าและนำผู้ใช้ไปยังหน้าชำระเงิน
+                localStorage.setItem('cart', JSON.stringify(cart));
+                window.location.href = 'payment.html';
+            }
+        }
+
+        
+
+        window.onload = function() {
+            updateCartCount();
+        };
+
+        function openProductPopup(name, price, description, imageSrc) {
+            document.getElementById('product-popup').style.display = 'block';
+            document.getElementById('popup-name').innerText = name;
+            document.getElementById('popup-price').innerText = 'ราคา: ' + price + ' บาท';
+            document.getElementById('popup-description').innerText = description;
+            document.getElementById('popup-image').src = imageSrc;
+        }
+
+        function closeProductPopup() {
+            document.getElementById('product-popup').style.display = 'none';
+        }
+    </script>
+    <footer>
+        <p>มีความสุขกับไอศรีม &copy; มีความสุขกับชีวิต </p>
+    </footer>
+</body>
+</html>
